@@ -1,7 +1,11 @@
+import argparse
 import sys
 
 def main():
-    print("Hello, Harness!")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--name", default="Harness")
+    args = parser.parse_args()
+    print(f"Hello, {args.name}!")
     return 0
 
 if __name__ == "__main__":

@@ -1,7 +1,12 @@
+import argparse
 import sys
 
 def main():
-    print("Hello, Harness!")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--count", type=int, default=1)
+    args = parser.parse_args()
+    for _ in range(args.count):
+        print("Hello, Harness!")
     return 0
 
 if __name__ == "__main__":

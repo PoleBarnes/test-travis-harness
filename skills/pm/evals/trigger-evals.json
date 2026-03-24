@@ -1,0 +1,14 @@
+[
+  {"query": "what should I work on next?", "should_trigger": true},
+  {"query": "show my board", "should_trigger": true},
+  {"query": "any blockers? I have a standup in 10 minutes and need to know what to report", "should_trigger": true},
+  {"query": "project status", "should_trigger": true},
+  {"query": "what skills are available?", "should_trigger": true},
+  {"query": "which work items are missing documentation? Dave asked me to check before the sprint review", "should_trigger": true},
+  {"query": "show me the doc debt across the board — anything that's in review but doesn't have an SDD yet", "should_trigger": true},
+  {"query": "create a pull request for my branch", "should_trigger": false},
+  {"query": "log 4 hours to the auth task", "should_trigger": false},
+  {"query": "write unit tests for the login module", "should_trigger": false},
+  {"query": "send an email to the team about the release", "should_trigger": false},
+  {"query": "create a plan from the triage branches — turn them into proper work items", "should_trigger": false}
+]

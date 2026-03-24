@@ -1,0 +1,14 @@
+[
+  {"query": "jot down that the search API is returning stale results", "should_trigger": true},
+  {"query": "quick note: we need to add rate limiting to the webhook endpoint", "should_trigger": true},
+  {"query": "capture these items: 1) fix the CSS on mobile 2) add dark mode toggle 3) update footer links", "should_trigger": true},
+  {"query": "log this for later — Jake mentioned the I2C bus locks up under thermal stress", "should_trigger": true},
+  {"query": "add to backlog: investigate switching from REST to gRPC for internal services", "should_trigger": true},
+  {"query": "just write this down before I forget — the deploy script skips database migrations if run on Tuesdays", "should_trigger": true},
+  {"query": "file a bug about the login page and check scope against requirements", "should_trigger": false},
+  {"query": "triage this issue with full severity analysis and duplicate checking", "should_trigger": false},
+  {"query": "what should I work on next", "should_trigger": false},
+  {"query": "plan work from triage branches", "should_trigger": false},
+  {"query": "review my pull request", "should_trigger": false},
+  {"query": "create a detailed requirements analysis for the new auth system", "should_trigger": false}
+]

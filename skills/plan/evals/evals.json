@@ -1,0 +1,64 @@
+{
+  "skill_name": "plan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/plan",
+      "expected_output": "Lists all triage branches with a one-line summary of each",
+      "files": [],
+      "expectations": [
+        "Defaults to list mode when no arguments provided",
+        "Collects triage branches from both local and remote",
+        "Deduplicates branches that exist both locally and remotely",
+        "Presents results as a table with branch name, title, severity, and scope"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/plan synthesize",
+      "expected_output": "Reads all triage branches, synthesizes findings into requirements and work items for approval",
+      "files": [],
+      "expectations": [
+        "Discovers and reads all triage branch documents",
+        "Groups and prioritizes by component and severity",
+        "Drafts requirements following ISO 29148 structure",
+        "Proposes work items and waits for user approval before creating"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/plan triage/fix-login-timeout",
+      "expected_output": "Processes the single specified triage branch through the synthesis flow",
+      "files": [],
+      "expectations": [
+        "Validates the branch exists (local or remote)",
+        "Reads markdown documents from the branch",
+        "Synthesizes into requirements and work items scoped to that branch",
+        "Checks existing doc/requirements.md to avoid ID collisions"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/plan list",
+      "expected_output": "Table of all triage branches with summary information",
+      "files": [],
+      "expectations": [
+        "Explicitly enters list mode",
+        "Shows branch name, title, severity, and scope for each triage branch",
+        "If no triage branches exist, provides guidance on creating one"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "process triage branches into work items",
+      "expected_output": "Full synthesis workflow discovering triage branches and creating requirements and work items",
+      "files": [],
+      "expectations": [
+        "Recognizes natural language request as synthesize mode",
+        "Discovers triage branches and reads their documents",
+        "Presents proposed requirements and work items for approval",
+        "Does not create work items without explicit user confirmation"
+      ]
+    }
+  ]
+}

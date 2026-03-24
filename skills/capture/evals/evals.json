@@ -1,0 +1,58 @@
+{
+  "skill_name": "capture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "capture: the admin dashboard shows a 404 when clicking the user management tab",
+      "expected_output": "Single item captured on a triage branch with minimal document",
+      "files": [],
+      "expectations": [
+        "Auto-classifies as bug",
+        "Generates a concise title from the description",
+        "Creates triage branch with naming convention triage/capture-*",
+        "Triage document contains Type, Captured timestamp, Source (quick-capture), Status (raw)",
+        "Raw description preserved unmodified",
+        "No scope check, quality analysis, or duplicate detection performed",
+        "Suggests /triage for follow-up refinement"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "capture these:\n\nThe CSV export truncates columns wider than 255 characters\n\nWe should add a bulk delete option to the inventory page\n\nUpdate the staging environment to use Postgres 16\n\nWhat happens if two users edit the same record simultaneously?",
+      "expected_output": "Four items captured in batch mode on a single triage branch",
+      "files": [],
+      "expectations": [
+        "Detects 4 separate items from the input",
+        "Creates all documents on a single triage/capture-batch-* branch",
+        "Correctly classifies: bug, feature, task, question",
+        "Shows summary table with item count, types, and titles",
+        "Each triage document is minimal (title, type, timestamp, source, raw description)",
+        "No quality analysis or scope checking performed"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "capture (no arguments)",
+      "expected_output": "Asks the user what they want to capture",
+      "files": [],
+      "expectations": [
+        "Detects empty input",
+        "Asks the user what they want to capture",
+        "Does not create any branches or files until user provides input"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "jot this down — Maria said the power consumption spikes to 450mA during LoRa transmit which is way over our 200mA budget",
+      "expected_output": "Single item captured, classified as risk",
+      "files": [],
+      "expectations": [
+        "Auto-classifies as risk (power budget concern)",
+        "Title captures the essence (power consumption over budget)",
+        "Preserves Maria's name and specific numbers in raw description",
+        "Creates minimal triage document without analysis",
+        "Suggests /triage for full analysis"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "skill_name": "harness",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "check harness health",
+      "expected_output": "Full audit report with skill, hook, context, and MCP findings ranked by impact",
+      "files": [],
+      "expectations": [
+        "Performs a full diagnostic scan across all harness components",
+        "Presents findings ranked by severity (HIGH, MEDIUM, LOW)",
+        "Does not file any tickets (audit mode is read-only)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/harness dashboard",
+      "expected_output": "Quick health summary with MCP servers, skills, tests, and warnings",
+      "files": [],
+      "expectations": [
+        "Reads local files only — no MCP calls",
+        "Lists MCP servers with version pinning status",
+        "Shows test coverage and configuration warnings"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/harness diagnose",
+      "expected_output": "Audit findings with proposed improvement tickets for user approval",
+      "files": [],
+      "expectations": [
+        "Performs full audit and formulates specific tickets for each finding",
+        "Presents all proposed tickets to user before filing",
+        "Files approved tickets via the triage flow"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/harness check-mcp",
+      "expected_output": "MCP server health report with connection status, versions, and configuration completeness",
+      "files": [],
+      "expectations": [
+        "Reads .mcp.json for all configured servers",
+        "Checks connection type, version, and env var configuration",
+        "Presents a table with status, version, and notes for each server"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "/harness skills",
+      "expected_output": "Focused audit on skill definitions only — frontmatter, arguments, error handling",
+      "files": [],
+      "expectations": [
+        "Runs full audit but only reports on skill-related findings",
+        "Checks frontmatter validity and argument handling",
+        "Prioritizes findings for the skills area"
+      ]
+    }
+  ]
+}

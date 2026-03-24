@@ -1,0 +1,207 @@
+direction: down
+
+# Slash command style: dark fill, white text, stroke-width 3, font-size 15
+
+# --- Phase 1: CAPTURE ---
+capture: "Phase 1 — CAPTURE" {
+  style.fill: "#eff6ff"
+  style.stroke: "#2563eb"
+
+  bug: "Bug Report" { style.fill: "#dbeafe" }
+  feature: "Feature Request" { style.fill: "#dbeafe" }
+  meeting: "Meeting Notes" { style.fill: "#dbeafe" }
+  scope: "Scope Change" { style.fill: "#dbeafe" }
+
+  capture_cmd: "/capture\nQuick input" {
+    style.fill: "#1d4ed8"
+    style.stroke: "#1e3a8a"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  triage_cmd: "/triage\nIntake + scope check" {
+    style.fill: "#1d4ed8"
+    style.stroke: "#1e3a8a"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  catchup_cmd: "/catch-me-up\nComms summary" {
+    style.fill: "#2563eb"
+    style.stroke: "#1d4ed8"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+
+  email_cmd: "/email" {
+    style.fill: "#15803d"
+    style.stroke: "#14532d"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+
+  bug -> capture_cmd
+  feature -> capture_cmd
+  meeting -> triage_cmd
+  scope -> triage_cmd
+  email_cmd -> triage_cmd
+  capture_cmd -> triage_cmd: queued
+  catchup_cmd -> triage_cmd: surfaces items {
+    style.stroke-dash: 3
+  }
+}
+
+# --- Phase 2: CLARIFY ---
+clarify: "Phase 2 — CLARIFY" {
+  style.fill: "#faf5ff"
+  style.stroke: "#7c3aed"
+
+  analyze: Analyze
+  scope_check: "In scope?" { shape: diamond; style.fill: "#e9d5ff" }
+  create_ticket: "Create ticket"
+  change_order: "Change order"
+  split: Split
+  estimate_cmd: "/estimate (planned)" {
+    style.fill: "#a78bfa"
+    style.stroke: "#7c3aed"
+    style.stroke-width: 1
+    style.stroke-dash: 3
+    style.font-color: "#ffffff"
+    style.font-size: 14
+  }
+  pm_review: "PM review"
+
+  analyze -> scope_check
+  scope_check -> create_ticket: Yes
+  scope_check -> change_order: No
+  scope_check -> split: Partial
+  change_order -> pm_review
+  split -> create_ticket
+  split -> pm_review
+  create_ticket -> estimate_cmd -> pm_review
+}
+
+# --- Phase 3: ORGANIZE ---
+organize: "Phase 3 — ORGANIZE" {
+  style.fill: "#f0fdf4"
+  style.stroke: "#16a34a"
+
+  approved: Approved { style.fill: "#86efac"; style.stroke: "#16a34a" }
+  closed: Closed { style.fill: "#fca5a5"; style.stroke: "#dc2626" }
+  backlog: Backlog { style.fill: "#fef08a"; style.stroke: "#a16207" }
+  plan_cmd: "/plan" {
+    style.fill: "#15803d"
+    style.stroke: "#14532d"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  requirements: Requirements
+  schedule: Schedule
+
+  approved -> plan_cmd
+  plan_cmd -> requirements
+  plan_cmd -> schedule
+}
+
+# --- Phase 4: ENGAGE ---
+engage: "Phase 4 — ENGAGE" {
+  style.fill: "#fff7ed"
+  style.stroke: "#ea580c"
+
+  implement_cmd: "/implement" {
+    style.fill: "#c2410c"
+    style.stroke: "#7c2d12"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  code: "Code + Test"
+  docs: "Doc deliverables"
+  pr_cmd: "/pr" {
+    style.fill: "#c2410c"
+    style.stroke: "#7c2d12"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  review: "Review team"
+  vv_cmd: "/vv" {
+    style.fill: "#9d174d"
+    style.stroke: "#831843"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  merge: Merge {
+    style.fill: "#86efac"
+    style.stroke: "#16a34a"
+    style.bold: true
+  }
+
+  implement_cmd -> code -> docs -> vv_cmd -> pr_cmd -> review
+  review -> merge: Pass
+  review -> code: Fail {
+    style.stroke: "#dc2626"
+    style.stroke-dash: 3
+  }
+}
+
+# --- Phase 5: REFLECT ---
+reflect: "Phase 5 — REFLECT" {
+  style.fill: "#fdf2f8"
+  style.stroke: "#be185d"
+
+  trace: Traceability
+  doc_audit: "Doc audit"
+  timecard_cmd: "/timecard" {
+    style.fill: "#9d174d"
+    style.stroke: "#831843"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  qbt: "QuickBooks Time"
+  pm_cmd: "/pm" {
+    style.fill: "#9d174d"
+    style.stroke: "#831843"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+
+  trace
+  doc_audit
+  timecard_cmd -> qbt
+}
+
+# --- Cross-phase connections ---
+capture.triage_cmd -> clarify.analyze
+clarify.pm_review -> organize.approved: Approve
+clarify.pm_review -> organize.closed: Reject {
+  style.stroke: "#dc2626"
+}
+clarify.pm_review -> organize.backlog: Defer {
+  style.stroke: "#a16207"
+}
+organize.schedule -> engage.implement_cmd
+engage.merge -> reflect.trace
+engage.merge -> reflect.doc_audit
+engage.merge -> reflect.timecard_cmd
+engage.merge -> reflect.pm_cmd
+reflect.pm_cmd -> capture.capture_cmd: New disruption {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 5
+}

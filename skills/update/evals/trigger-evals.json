@@ -1,0 +1,10 @@
+[
+  {"query": "update the plugin", "should_trigger": true},
+  {"query": "upgrade harness to the latest version", "should_trigger": true},
+  {"query": "check for updates", "should_trigger": true},
+  {"query": "get the latest version", "should_trigger": true},
+  {"query": "how do I install the plugin for the first time?", "should_trigger": false},
+  {"query": "what version am I running?", "should_trigger": false},
+  {"query": "set up my credentials", "should_trigger": false},
+  {"query": "update this work item in Azure DevOps", "should_trigger": false}
+]

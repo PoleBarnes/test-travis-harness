@@ -1,0 +1,62 @@
+direction: down
+
+# --- Activity Sources ---
+sources: "Activity Sources" {
+  style.fill: "#eff6ff"
+  style.stroke: "#2563eb"
+  grid-columns: 5
+  git: Git { style.fill: "#dbeafe" }
+  jira: Jira { style.fill: "#dbeafe" }
+  email: Email { style.fill: "#dbeafe" }
+  chat: Chat { style.fill: "#dbeafe" }
+  calendar: Calendar { style.fill: "#dbeafe" }
+}
+
+# --- AI Engine Pipeline ---
+engine: "AI Breadcrumb Engine" {
+  style.fill: "#fff7ed"
+  style.stroke: "#ea580c"
+
+  collect: "1. Collect" { style.fill: "#fed7aa" }
+  match: "2. Match to ticket" { style.fill: "#fed7aa" }
+  timeline: "3. Build timeline" { style.fill: "#fdba74"; style.stroke: "#c2410c"; style.bold: true }
+  comments: "4. Generate comments" { style.fill: "#fed7aa" }
+  validate: "5. Validate rules" { style.fill: "#fdba74"; style.stroke: "#c2410c" }
+
+  collect -> match -> timeline -> comments -> validate
+}
+
+# --- Outputs ---
+outputs: "Time Entry Outputs" {
+  style.fill: "#f0fdf4"
+  style.stroke: "#16a34a"
+  grid-columns: 3
+  jira_t: "Jira Time Fields" { style.fill: "#dcfce7" }
+  report: "Timecard Report" { style.fill: "#dcfce7" }
+  qbt: "QuickBooks Time" { style.fill: "#dcfce7" }
+}
+
+# --- Approval ---
+timecard_cmd: "/timecard" {
+  style.fill: "#9d174d"
+  style.stroke: "#831843"
+  style.stroke-width: 3
+  style.font-color: "#ffffff"
+  style.font-size: 15
+  style.bold: true
+}
+pm_approve: "PM approves" {
+  shape: diamond
+  style.fill: "#fef08a"
+  style.stroke: "#a16207"
+}
+
+# --- Connections ---
+sources -> engine: feeds into
+engine -> outputs: produces
+outputs -> timecard_cmd: PM reviews
+timecard_cmd -> pm_approve
+pm_approve -> outputs.qbt: approved {
+  style.stroke: "#16a34a"
+  style.stroke-dash: 3
+}

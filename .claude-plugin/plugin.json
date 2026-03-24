@@ -1,0 +1,17 @@
+{
+  "name": "travis",
+  "description": "Travis Hendrickson personal AI harness \u2014 GitHub-based workflow with Claude",
+  "version": "0.3.0",
+  "author": {
+    "name": "Travis Hendrickson",
+    "url": "https://github.com/PoleBarnes"
+  },
+  "homepage": "https://github.com/PoleBarnes/travis-harness",
+  "repository": "https://github.com/PoleBarnes/travis-harness",
+  "license": "PROPRIETARY",
+  "keywords": [
+    "travis",
+    "travis-harness",
+    "harness"
+  ]
+}

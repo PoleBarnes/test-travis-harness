@@ -1,0 +1,12 @@
+[
+  {"query": "file a bug about the login page", "should_trigger": true},
+  {"query": "I want to report an issue with the API", "should_trigger": true},
+  {"query": "create a ticket for the new dashboard feature", "should_trigger": true},
+  {"query": "new feature request: add export to CSV", "should_trigger": true},
+  {"query": "what's the status of my current sprint", "should_trigger": false},
+  {"query": "review my pull request", "should_trigger": false},
+  {"query": "plan work from triage branches", "should_trigger": false},
+  {"query": "analyze this bug report and determine severity and impact", "should_trigger": true},
+  {"query": "quickly log this issue without full analysis", "should_trigger": false},
+  {"query": "capture this as a todo item for later", "should_trigger": false}
+]

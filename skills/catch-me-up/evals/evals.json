@@ -1,0 +1,54 @@
+{
+  "skill_name": "catch-me-up",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "catch me up",
+      "expected_output": "Full briefing across all configured sources with unified summary and suggested actions",
+      "files": [],
+      "expectations": [
+        "Attempts to query all configured data sources (email, chat, calendar, work items, PRs)",
+        "Presents a unified summary, not separate tool dumps",
+        "Categorizes emails (action required, FYI, promotional)",
+        "Shows today's calendar as compact timeline",
+        "Ends with 2-5 suggested next actions linking to harness skills",
+        "Gracefully handles unavailable MCP servers"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "catch me up on just email and PRs",
+      "expected_output": "Focused briefing covering only email and pull requests",
+      "files": [],
+      "expectations": [
+        "Detects focus area from arguments",
+        "Only queries email and PR sources, skips chat/calendar/work items",
+        "Still presents unified format with suggested actions"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "what did I miss since yesterday (no MCP servers configured)",
+      "expected_output": "Graceful fallback to git-only context with setup guidance",
+      "files": [],
+      "expectations": [
+        "Detects that MCP servers are unavailable",
+        "Falls back to git context (recent commits, branch, triage branches)",
+        "Suggests running /setup to configure MCP servers",
+        "Does not crash or show raw error messages"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "good morning, give me the rundown before standup in 10 minutes",
+      "expected_output": "Time-aware briefing that prioritizes urgent items and upcoming meeting",
+      "files": [],
+      "expectations": [
+        "Recognizes time pressure (standup in 10 minutes)",
+        "Flags the upcoming calendar event",
+        "Prioritizes blockers and items relevant to standup discussion",
+        "Keeps summary concise given time constraint"
+      ]
+    }
+  ]
+}

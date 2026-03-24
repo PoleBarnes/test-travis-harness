@@ -1,0 +1,9 @@
+[
+  {"query": "check my email", "should_trigger": true},
+  {"query": "what's in my inbox", "should_trigger": true},
+  {"query": "do I have any unread messages", "should_trigger": true},
+  {"query": "email triage", "should_trigger": true},
+  {"query": "send a Slack message to the team", "should_trigger": false},
+  {"query": "schedule a meeting for tomorrow", "should_trigger": false},
+  {"query": "write a document about our API", "should_trigger": false}
+]

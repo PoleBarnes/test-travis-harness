@@ -1,0 +1,14 @@
+[
+  {"query": "check test coverage for all requirements", "should_trigger": true},
+  {"query": "audit requirements traceability", "should_trigger": true},
+  {"query": "can you run a V&V check on the auth module before we merge? I want to make sure all the acceptance criteria have tests", "should_trigger": true},
+  {"query": "what requirements are untested?", "should_trigger": true},
+  {"query": "check if all documentation deliverables are present for F3-456 — Dave needs this for the compliance review", "should_trigger": true},
+  {"query": "are the SDD and engineering journal complete for the webhook feature?", "should_trigger": true},
+  {"query": "run the test suite", "should_trigger": false},
+  {"query": "write tests for the email skill", "should_trigger": false},
+  {"query": "show me the requirements document", "should_trigger": false},
+  {"query": "implement REQ-F3-SKL-005", "should_trigger": false},
+  {"query": "create a pull request for my changes", "should_trigger": false},
+  {"query": "what should I work on next — any high priority items on the board?", "should_trigger": false}
+]

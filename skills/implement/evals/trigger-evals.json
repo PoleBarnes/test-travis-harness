@@ -1,0 +1,14 @@
+[
+  {"query": "build this feature for the dashboard", "should_trigger": true},
+  {"query": "ok I need to implement F3-456, it's the webhook integration for the notification service — Chris wants it by Thursday", "should_trigger": true},
+  {"query": "work on PROJ-123", "should_trigger": true},
+  {"query": "implement input validation on the signup form", "should_trigger": true},
+  {"query": "can you build out the retry logic we talked about? the one for the external API calls that keep timing out", "should_trigger": true},
+  {"query": "implement PROJ-789 and make sure all the doc deliverables are there, Dave wants the SDD for the compliance audit", "should_trigger": true},
+  {"query": "review the PR for PROJ-123", "should_trigger": false},
+  {"query": "check test coverage for the skills", "should_trigger": false},
+  {"query": "what is the status of PROJ-123?", "should_trigger": false},
+  {"query": "deploy the latest build to staging", "should_trigger": false},
+  {"query": "check what documentation deliverables are missing from the last sprint", "should_trigger": false},
+  {"query": "the SDD for the auth module needs updating but I don't want to change any code", "should_trigger": false}
+]

@@ -1,0 +1,51 @@
+{
+  "skill_name": "orchestrate",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/orchestrate",
+      "expected_output": "Shows current sprint/iteration status including work items, their states, and progress metrics",
+      "files": [],
+      "expectations": [
+        "Defaults to status mode when no arguments provided",
+        "Reads session-state.json for tracked work item states",
+        "Queries tracker for current iteration work items"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/orchestrate next",
+      "expected_output": "Selects the highest-priority ready work item and delegates to /implement",
+      "files": [],
+      "expectations": [
+        "Queries tracker for work items in the current iteration",
+        "Filters to items in Todo/Ready state with no unresolved blockers",
+        "Ranks by priority and selects the top item",
+        "Delegates to /implement with the selected work item ID"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/orchestrate complete PROJ-123",
+      "expected_output": "Runs completion gate checks and transitions the work item to Done if all gates pass",
+      "files": [],
+      "expectations": [
+        "Validates all documentation deliverables are produced per proportionality tier",
+        "Checks PR is merged and tests pass",
+        "Transitions work item to Done state via tracker operations",
+        "Updates session-state.json to reflect completed state"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/orchestrate standup",
+      "expected_output": "Generates a structured standup report summarizing yesterday's work, today's plan, and blockers",
+      "files": [],
+      "expectations": [
+        "Reviews git log and session state for recent activity",
+        "Identifies completed, in-progress, and blocked items",
+        "Formats output as yesterday/today/blockers standup structure"
+      ]
+    }
+  ]
+}

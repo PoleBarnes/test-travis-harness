@@ -1,0 +1,72 @@
+{
+  "skill_name": "pm",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "what should I work on today?",
+      "expected_output": "Prioritized action items based on board state, blocked issues, and PRs awaiting review",
+      "files": [],
+      "expectations": [
+        "Queries the project board for active work items",
+        "Presents a prioritized list of action items with rationale",
+        "Includes a Suggested Skills section based on current context"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/pm skills",
+      "expected_output": "Formatted table of all available harness skills with descriptions",
+      "files": [],
+      "expectations": [
+        "Lists all skills from the Available Skills dynamic context",
+        "Presents them in a table format with name and description",
+        "Includes a tip about /pm suggest and /pm <skill-name>"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/pm suggest",
+      "expected_output": "Context-aware skill recommendations based on time of day, branch state, and PR status",
+      "files": [],
+      "expectations": [
+        "Reads current context (branch, time, recent commits)",
+        "Provides 2-4 skill suggestions with rationale",
+        "Suggestions are contextually relevant to the user's current state"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/pm plan",
+      "expected_output": "Detailed information about the plan skill including description, arguments, modes, and usage examples",
+      "files": [],
+      "expectations": [
+        "Identifies 'plan' as a skill name lookup",
+        "Reads the plan SKILL.md for full details",
+        "Presents description, arguments, modes, usage examples, and related skills"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "are there any blockers on the board?",
+      "expected_output": "List of blocked work items with reasons",
+      "files": [],
+      "expectations": [
+        "Queries the project board for blocked items",
+        "Presents each blocker with work item ID, summary, and blocking reason",
+        "Suggests actions to resolve blockers"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "project status — focus on what's incomplete or blocked",
+      "expected_output": "Project summary that includes documentation gaps alongside blockers and WIP",
+      "files": [],
+      "expectations": [
+        "Queries the project board for active work items",
+        "Identifies documentation debt as a priority item",
+        "Includes Documentation Gaps section showing work items with missing deliverables and their tier",
+        "Suggests /vv or /implement to address gaps"
+      ]
+    }
+  ]
+}

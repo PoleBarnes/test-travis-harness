@@ -1,0 +1,184 @@
+{
+  "skill_name": "autopilot",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/autopilot",
+      "expected_output": "Runs in observe mode (default), scans project state, reports recommended actions without executing",
+      "files": [],
+      "expectations": [
+        "Defaults to observe mode when no --mode flag provided",
+        "Scans for triage branches, backlog items, WIP, and PRs",
+        "Presents a prioritized list of recommended actions",
+        "Does NOT invoke /implement, /plan, or /pr (observe only)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/autopilot --mode implement",
+      "expected_output": "Starts autonomous SCAN-DECIDE-EXECUTE-EVALUATE loop, dispatches work to pipeline skills",
+      "files": [],
+      "expectations": [
+        "Initializes session with budget and run log",
+        "Runs SCAN to analyze project state",
+        "Uses priority algorithm to DECIDE next action",
+        "Dispatches to /orchestrate, /implement, /plan, or /pr as appropriate",
+        "Evaluates results and loops or pauses"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/autopilot --dry-run",
+      "expected_output": "Alias for observe mode — shows what would happen without executing",
+      "files": [],
+      "expectations": [
+        "Treats --dry-run as equivalent to --mode observe",
+        "Scans project state and reports recommended actions",
+        "Does NOT execute any pipeline skills"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/autopilot --budget 2h --mode implement",
+      "expected_output": "Starts autonomous loop with 120-minute time budget",
+      "files": [],
+      "expectations": [
+        "Parses '2h' as 120 minutes",
+        "Displays budget in session initialization",
+        "Tracks elapsed time per cycle",
+        "Would stop gracefully when budget exhausted"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "/autopilot --mode triage-only",
+      "expected_output": "Scans for triage branches and dispatches /plan or /triage only — no code implementation",
+      "files": [],
+      "expectations": [
+        "Sets mode to triage-only",
+        "SCAN checks for triage branches and unplanned items",
+        "Dispatches only /plan or /triage skills",
+        "Does NOT invoke /implement or /pr",
+        "Pauses when no triage work remaining"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "/autopilot --mode review-only",
+      "expected_output": "Scans for open PRs and dispatches /pr review only — no code implementation",
+      "files": [],
+      "expectations": [
+        "Sets mode to review-only",
+        "SCAN checks for PRs awaiting review",
+        "Dispatches only /pr skill for review",
+        "Does NOT invoke /implement or /plan",
+        "Pauses when no PRs to review"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "/autopilot --mode full --budget 1h",
+      "expected_output": "Starts full autonomy mode with auto-assign, auto-state, and auto-merge enabled within a 60-minute budget",
+      "files": [],
+      "expectations": [
+        "Sets mode to full",
+        "Parses '1h' as 60 minutes",
+        "Enables auto-assign for unassigned items",
+        "Enables auto-state to sync tracker state after each cycle",
+        "Enables auto-merge for approved PRs with passing checks",
+        "All enforcement gates still checked normally"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "/autopilot --token-budget 500k --mode implement",
+      "expected_output": "Starts implement mode tracking both time budget and a 500k token budget",
+      "files": [],
+      "expectations": [
+        "Parses '500k' as 500000 tokens",
+        "Sets autopilot.budget.tokens to 500000",
+        "Tracks token consumption in autopilot.budget.tokensUsed",
+        "Displays token budget alongside time budget in session initialization",
+        "Would stop gracefully when either budget exhausted"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "/autopilot --resume",
+      "expected_output": "Resumes the most recent paused autopilot session with a summary of previous state",
+      "files": [],
+      "expectations": [
+        "Reads previous session from session-state.json",
+        "Displays resume summary with previous session ID, elapsed time, and pause reason",
+        "Sets autopilot.previousSessionId to the resumed-from session ID",
+        "Continues from where the previous session left off",
+        "Inherits mode and remaining budget from previous session"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "/autopilot --mode implement --self-improve per-cycle",
+      "expected_output": "Starts implement mode with per-cycle self-improvement analysis after each SCAN-DECIDE-EXECUTE-EVALUATE cycle",
+      "files": [],
+      "expectations": [
+        "Sets autopilot.selfImprovement.level to 'per-cycle'",
+        "After each cycle, runs analysis phase collecting observations",
+        "Stores observations in autopilot.selfImprovement.observations",
+        "Proposes or applies improvements based on analysis",
+        "Tracks improvements in autopilot.selfImprovement.improvementsApplied"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "/autopilot --mode implement --self-improve end-of-session",
+      "expected_output": "Starts implement mode with self-improvement analysis deferred to session end",
+      "files": [],
+      "expectations": [
+        "Sets autopilot.selfImprovement.level to 'end-of-session'",
+        "Does NOT run analysis between cycles",
+        "At session end, performs comprehensive analysis collecting observations",
+        "Stores observations in autopilot.selfImprovement.observations",
+        "Proposes improvements in autopilot.selfImprovement.improvementsProposed"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "/autopilot --mode implement --experiment",
+      "expected_output": "Starts implement mode with experiment mode enabled, using dual-implementation comparison for dispatches",
+      "files": [],
+      "expectations": [
+        "Sets autopilot.experiment to true",
+        "Validates mode is implement or full (experiment only valid in those modes)",
+        "Uses dual-approach protocol when dispatching /implement",
+        "Compares implementation approaches before selecting final",
+        "References experiment-mode.md for protocol details"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "/autopilot --mode implement --projects TH,F3",
+      "expected_output": "Starts implement mode scanning across TH and F3 projects",
+      "files": [],
+      "expectations": [
+        "Parses comma-separated project keys into autopilot.scopedProjects array",
+        "Runs SCAN phase for each project (TH and F3)",
+        "Merges scan results into a combined state summary",
+        "Uses round-robin or priority-based dispatch across projects",
+        "References cross-project.md for combined scan protocol"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "/autopilot --mode implement --budget 2h",
+      "expected_output": "Starts implement mode with 2-hour budget and displays session history trends from previous runs",
+      "files": ["doc/autopilot/history.json"],
+      "expectations": [
+        "Reads doc/autopilot/history.json during session initialization",
+        "Displays trend summary from last 3 sessions (avg cycles, items/session, duration)",
+        "Sets autopilot.historyPath to doc/autopilot/history.json",
+        "On session end, appends session summary to history.json",
+        "Commits history.json alongside the run log"
+      ]
+    }
+  ]
+}

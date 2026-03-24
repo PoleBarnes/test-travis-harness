@@ -1,0 +1,73 @@
+{
+  "skill_name": "vv",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "check test coverage across all requirements",
+      "expected_output": "Runs a full V&V audit with complete traceability matrix",
+      "files": [],
+      "expectations": [
+        "Defaults to full scope since no specific area was given",
+        "Produces a traceability matrix mapping requirements to implementations and tests",
+        "Reports coverage percentage and gaps"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "audit requirements for skills only",
+      "expected_output": "Runs a scoped V&V audit on SKL requirements",
+      "files": [],
+      "expectations": [
+        "Scopes the audit to REQ-*-SKL-* requirements",
+        "Only checks skills/*/SKILL.md implementations",
+        "Reports gaps specific to skill requirements"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "verify implementation of REQ-F3-SKL-001",
+      "expected_output": "Deep audit of a single requirement",
+      "files": [],
+      "expectations": [
+        "Identifies REQ-F3-SKL-001 as a specific requirement ID",
+        "Traces the requirement to its implementation and test files",
+        "Reports whether all acceptance criteria are covered"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "audit documentation deliverables for F3-456",
+      "expected_output": "Audits documentation completeness for a specific work item using proportionality tier",
+      "files": [],
+      "expectations": [
+        "Determines the proportionality tier for the work item",
+        "Checks for each required deliverable (SDD, linter, coverage, tests, journal based on tier)",
+        "Flags missing deliverables as CRITICAL or RECOMMENDED",
+        "Includes Documentation Deliverables table in the report"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "what requirements are untested?",
+      "expected_output": "Full audit focusing on gap analysis",
+      "files": [],
+      "expectations": [
+        "Runs a full-scope audit",
+        "Highlights requirements with no associated test files",
+        "Provides gap analysis with recommended actions"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "full V&V audit — make sure documentation, tests, and traceability are all complete before we ship",
+      "expected_output": "Complete audit covering traceability, AC quality, AND documentation deliverables",
+      "files": [],
+      "expectations": [
+        "Runs all audit steps: scope, trace, verify, doc audit, AC validation",
+        "Produces traceability matrix",
+        "Produces documentation deliverables checklist with proportionality tier",
+        "Reports documentation deliverables count in summary (N/M present)"
+      ]
+    }
+  ]
+}

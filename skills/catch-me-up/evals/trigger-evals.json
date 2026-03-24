@@ -1,0 +1,14 @@
+[
+  {"query": "catch me up on what happened overnight", "should_trigger": true},
+  {"query": "good morning, what did I miss?", "should_trigger": true},
+  {"query": "any updates since yesterday?", "should_trigger": true},
+  {"query": "give me my morning briefing", "should_trigger": true},
+  {"query": "what's going on today, anything I need to know before standup?", "should_trigger": true},
+  {"query": "start of day — show me emails, slack, and my board", "should_trigger": true},
+  {"query": "check my email inbox and show unread messages", "should_trigger": false},
+  {"query": "what should I work on next from the backlog", "should_trigger": false},
+  {"query": "review my pull request #42", "should_trigger": false},
+  {"query": "file a bug about the login page timeout", "should_trigger": false},
+  {"query": "search for emails from David about the demo", "should_trigger": false},
+  {"query": "show my calendar for next Thursday", "should_trigger": false}
+]

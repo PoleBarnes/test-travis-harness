@@ -1,0 +1,65 @@
+{
+  "skill_name": "email",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "check my email",
+      "expected_output": "Privacy banner followed by categorized inbox summary of unread messages",
+      "files": [],
+      "expectations": [
+        "Displays the privacy warning banner before any email content",
+        "Queries the email MCP server for unread messages",
+        "Categorizes emails into Action Required, FYI, Internal, External, Promotional",
+        "Applies PII redaction rules to summaries"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "email triage",
+      "expected_output": "Full inbox summary with archive proposals for low-priority items",
+      "files": [],
+      "expectations": [
+        "Performs full summary first",
+        "Proposes archiving promotional and low-priority FYI emails",
+        "Waits for user confirmation before archiving anything",
+        "Displays the privacy warning banner"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "email from:boss@company.com",
+      "expected_output": "Search results for emails from boss@company.com in categorized format",
+      "files": [],
+      "expectations": [
+        "Treats the argument as a search query",
+        "Queries the email MCP server with the search term",
+        "Presents results in the same categorized format as summary mode",
+        "Suggests alternative search terms if no results found"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "reply to the email from Sarah about the project deadline",
+      "expected_output": "Draft reply shown for user review with send confirmation prompt",
+      "files": [],
+      "expectations": [
+        "Reads the full email thread for context",
+        "Drafts a professional reply matching conversation tone",
+        "Presents the draft for user review before sending",
+        "Shows recipient and asks for explicit send confirmation"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "check my email (but email MCP is not configured)",
+      "expected_output": "Clear error message about missing email MCP server with setup guidance",
+      "files": [],
+      "expectations": [
+        "Detects that email MCP server is not configured",
+        "Informs the user about the requirement",
+        "Provides setup guidance mentioning .mcp.json",
+        "Does not attempt to access email through alternative means"
+      ]
+    }
+  ]
+}

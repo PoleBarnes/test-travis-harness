@@ -1,0 +1,14 @@
+[
+  {"query": "orchestrate status of all work items", "should_trigger": true},
+  {"query": "start work on the next unblocked item", "should_trigger": true},
+  {"query": "orchestrate the iteration", "should_trigger": true},
+  {"query": "mark PROJ-123 as done via orchestrate", "should_trigger": true},
+  {"query": "orchestrate what to work on next", "should_trigger": true},
+  {"query": "complete the work item and close it out", "should_trigger": true},
+  {"query": "implement PROJ-123", "should_trigger": false},
+  {"query": "create a pull request", "should_trigger": false},
+  {"query": "file a bug about the login page", "should_trigger": false},
+  {"query": "review the code changes", "should_trigger": false},
+  {"query": "plan work from triage branches", "should_trigger": false},
+  {"query": "send an email to the team", "should_trigger": false}
+]

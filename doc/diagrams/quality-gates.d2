@@ -1,0 +1,128 @@
+direction: down
+
+# --- Scope Determination ---
+scope: "Scope Determination" {
+  style.fill: "#f5f5f5"
+  style.stroke: "#9e9e9e"
+
+  type: "Work Item Type" {
+    shape: diamond
+    style.fill: "#e0e0e0"
+    style.stroke: "#616161"
+    style.bold: true
+  }
+  minimal: "MINIMAL (3)" {
+    style.fill: "#86efac"
+    style.stroke: "#16a34a"
+    style.bold: true
+  }
+  standard: "STANDARD (6)" {
+    style.fill: "#fdba74"
+    style.stroke: "#ea580c"
+    style.bold: true
+  }
+  comprehensive: "COMPREHENSIVE (8)" {
+    style.fill: "#f9a8d4"
+    style.stroke: "#be185d"
+    style.bold: true
+  }
+
+  type -> minimal: "bug, config change"
+  type -> standard: "feature, integration"
+  type -> comprehensive: "architecture, security"
+}
+
+# --- Artifact Tiers ---
+minimal_arts: "Minimal Artifacts" {
+  style.fill: "#f0fdf4"
+  style.stroke: "#16a34a"
+  grid-columns: 3
+  m1: "Linter Report" { style.fill: "#dcfce7" }
+  m2: "Unit Tests" { style.fill: "#dcfce7" }
+  m3: "Regression Tests" { style.fill: "#dcfce7" }
+}
+
+standard_arts: "+ Standard Artifacts" {
+  style.fill: "#fff7ed"
+  style.stroke: "#ea580c"
+  grid-columns: 3
+  s1: "Design Document" { style.fill: "#fed7aa" }
+  s2: "Code Coverage" { style.fill: "#fed7aa" }
+  s3: "V&V Report" { style.fill: "#fed7aa" }
+}
+
+comp_arts: "+ Comprehensive Artifacts" {
+  style.fill: "#fdf2f8"
+  style.stroke: "#be185d"
+  grid-columns: 2
+  c1: "Diagrams (D2)" { style.fill: "#fce7f3" }
+  c2: "Eng Journal" { style.fill: "#fce7f3" }
+}
+
+# --- Enforcement ---
+enforcement: "Enforcement" {
+  style.fill: "#eef2ff"
+  style.stroke: "#4338ca"
+
+  impl: "/implement" {
+    style.fill: "#c2410c"
+    style.stroke: "#7c2d12"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  vv: "/vv audit" {
+    style.fill: "#9d174d"
+    style.stroke: "#831843"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+  pr: "/pr review" {
+    style.fill: "#c2410c"
+    style.stroke: "#7c2d12"
+    style.stroke-width: 3
+    style.font-color: "#ffffff"
+    style.font-size: 15
+    style.bold: true
+  }
+
+  impl -> vv -> pr
+}
+
+# --- Outcomes ---
+pass: "Ready to merge" {
+  style.fill: "#86efac"
+  style.stroke: "#16a34a"
+  style.bold: true
+}
+fail: Blocked {
+  style.fill: "#fca5a5"
+  style.stroke: "#dc2626"
+  style.bold: true
+}
+
+# --- Connections ---
+scope.minimal -> minimal_arts
+scope.standard -> minimal_arts
+scope.standard -> standard_arts
+scope.comprehensive -> minimal_arts
+scope.comprehensive -> standard_arts
+scope.comprehensive -> comp_arts
+
+minimal_arts -> enforcement.impl
+standard_arts -> enforcement.impl
+comp_arts -> enforcement.impl
+
+enforcement.pr -> pass: All present {
+  style.stroke: "#16a34a"
+}
+enforcement.pr -> fail: Any missing {
+  style.stroke: "#dc2626"
+}
+fail -> enforcement.impl: fix {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 5
+}

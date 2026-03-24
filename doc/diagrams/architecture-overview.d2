@@ -1,0 +1,211 @@
+direction: down
+
+# --- Slash command style: dark saturated fill, white text, thick stroke, large font ---
+
+# --- Layer 5: User Interface ---
+ui: "Layer 5 — User Interface" {
+  style.fill: "#e0f2fe"
+  style.stroke: "#0284c7"
+  cli: "Claude Code CLI" {
+    style.fill: "#bae6fd"
+    style.stroke: "#0284c7"
+    style.bold: true
+    style.font-size: 16
+  }
+}
+
+# --- Layer 4: Skills ---
+skills: "Layer 4 — Skills (12)" {
+  style.fill: "#f8fafc"
+  style.stroke: "#94a3b8"
+
+  ingest: Ingest {
+    style.fill: "#eff6ff"
+    style.stroke: "#2563eb"
+    grid-columns: 3
+    c1: "/capture" {
+      style.fill: "#1d4ed8"
+      style.stroke: "#1e3a8a"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    c2: "/triage" {
+      style.fill: "#1d4ed8"
+      style.stroke: "#1e3a8a"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    c3: "/catch-me-up" {
+      style.fill: "#1d4ed8"
+      style.stroke: "#1e3a8a"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+  }
+
+  organize: Organize {
+    style.fill: "#faf5ff"
+    style.stroke: "#7c3aed"
+    grid-columns: 2
+    o1: "/plan" {
+      style.fill: "#6d28d9"
+      style.stroke: "#4c1d95"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    o2: "/estimate (planned)" {
+      style.fill: "#a78bfa"
+      style.stroke: "#7c3aed"
+      style.stroke-width: 1
+      style.stroke-dash: 3
+      style.font-color: "#ffffff"
+      style.font-size: 14
+    }
+  }
+
+  engage: Engage {
+    style.fill: "#fff7ed"
+    style.stroke: "#ea580c"
+    grid-columns: 2
+    e1: "/implement" {
+      style.fill: "#c2410c"
+      style.stroke: "#7c2d12"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    e2: "/pr" {
+      style.fill: "#c2410c"
+      style.stroke: "#7c2d12"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+  }
+
+  reflect: Reflect {
+    style.fill: "#fdf2f8"
+    style.stroke: "#be185d"
+    grid-columns: 3
+    r1: "/pm" {
+      style.fill: "#9d174d"
+      style.stroke: "#831843"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    r2: "/vv" {
+      style.fill: "#9d174d"
+      style.stroke: "#831843"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    r3: "/harness" {
+      style.fill: "#9d174d"
+      style.stroke: "#831843"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+  }
+
+  support: Support {
+    style.fill: "#f0fdf4"
+    style.stroke: "#16a34a"
+    grid-columns: 3
+    s1: "/email" {
+      style.fill: "#15803d"
+      style.stroke: "#14532d"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    s2: "/timecard" {
+      style.fill: "#15803d"
+      style.stroke: "#14532d"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+    s3: "/update" {
+      style.fill: "#15803d"
+      style.stroke: "#14532d"
+      style.stroke-width: 3
+      style.font-color: "#ffffff"
+      style.font-size: 15
+      style.bold: true
+    }
+  }
+}
+
+# --- Layer 3: Quality Gates ---
+quality: "Layer 3 — Quality Gates" {
+  style.fill: "#fefce8"
+  style.stroke: "#ca8a04"
+  grid-columns: 3
+  q1: "Trigger Evals" { style.fill: "#fef08a"; style.stroke: "#a16207" }
+  q2: "7 AI Checks" { style.fill: "#fef08a"; style.stroke: "#a16207" }
+  q3: "Doc Deliverables" { style.fill: "#fef08a"; style.stroke: "#a16207" }
+}
+
+# --- Layer 2: MCP Integration ---
+mcp: "Layer 2 — MCP Integration" {
+  style.fill: "#f1f5f9"
+  style.stroke: "#64748b"
+  grid-columns: 3
+  m1: Jira { style.fill: "#e2e8f0" }
+  m2: GitHub { style.fill: "#e2e8f0" }
+  m3: "Azure DevOps" { style.fill: "#e2e8f0" }
+  m4: Linear { style.fill: "#e2e8f0" }
+  m5: Google { style.fill: "#e2e8f0" }
+  m6: Microsoft { style.fill: "#e2e8f0" }
+  m7: Slack { style.fill: "#e2e8f0" }
+  m8: "Time Tracking" { style.fill: "#e2e8f0" }
+  m9: Box { style.fill: "#e2e8f0" }
+}
+
+# --- Layer 1: Builder ---
+builder: "Layer 1 — Builder" {
+  style.fill: "#f5f5f5"
+  style.stroke: "#9e9e9e"
+  grid-columns: 3
+  b1: "config.yaml" { style.fill: "#e5e5e5" }
+  b2: "Jinja2 Templates" { style.fill: "#e5e5e5" }
+  b3: "build.py" { style.fill: "#fef9c3"; style.stroke: "#a16207"; style.bold: true }
+}
+
+# --- Layer 0: State & Hooks ---
+state: "Layer 0 — State & Hooks" {
+  style.fill: "#eceff1"
+  style.stroke: "#607d8b"
+  grid-columns: 3
+  st1: "session-state.json" { style.fill: "#cfd8dc" }
+  st2: Hooks { style.fill: "#cfd8dc" }
+  st3: "Bash Guard" { style.fill: "#ffcdd2"; style.stroke: "#c62828" }
+}
+
+# --- Vertical layer chain ---
+ui -> skills: invokes
+skills -> quality: gates
+quality -> mcp: calls {
+  style.stroke-dash: 3
+  style.stroke: "#64748b"
+}
+mcp -> builder
+builder -> state

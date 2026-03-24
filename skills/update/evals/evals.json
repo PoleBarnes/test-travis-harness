@@ -1,0 +1,61 @@
+{
+  "skill_name": "update",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "update the plugin to the latest version",
+      "expected_output": "Runs install.sh, compares versions, reports result and restart instructions",
+      "files": [],
+      "expectations": [
+        "Captures current version from plugin.json before running update",
+        "Executes bash $CLAUDE_PLUGIN_ROOT/install.sh",
+        "Compares old and new versions and reports the difference",
+        "Instructs user to restart Claude Code if version changed"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "upgrade harness",
+      "expected_output": "Runs the update process and reports version comparison",
+      "files": [],
+      "expectations": [
+        "Recognizes 'upgrade harness' as an update request",
+        "Runs the install script",
+        "Reports whether the version changed or was already current"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "check for updates",
+      "expected_output": "Runs install.sh to check and apply any available updates",
+      "files": [],
+      "expectations": [
+        "Treats 'check for updates' as an update trigger",
+        "Captures pre-update version",
+        "Runs install.sh and reports outcome"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "update plugin but CLAUDE_PLUGIN_ROOT is not set",
+      "expected_output": "Reports that the plugin root is not configured and stops",
+      "files": [],
+      "expectations": [
+        "Detects that CLAUDE_PLUGIN_ROOT is not set",
+        "Reports the plugin is not properly installed",
+        "Does not attempt to run install.sh"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "get latest version of the harness",
+      "expected_output": "Runs the update flow and reports version status",
+      "files": [],
+      "expectations": [
+        "Recognizes 'get latest version' as an update trigger",
+        "Runs the install script",
+        "Reports old vs new version comparison"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "skill_name": "implement",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "implement PROJ-123",
+      "expected_output": "Fetches work item PROJ-123, implements it end-to-end",
+      "files": [],
+      "expectations": [
+        "Recognizes PROJ-123 as a work item ID",
+        "Fetches the work item from the configured DevOps platform",
+        "Decomposes the work item into implementation steps",
+        "Reports completion with branch, PR, and test results"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "build a login validation feature for the user form",
+      "expected_output": "Uses natural language as the task description and implements it",
+      "files": [],
+      "expectations": [
+        "Treats the input as a natural language task description",
+        "Decomposes into subtasks and coordinates implementation",
+        "Implements the feature with tests"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "implement",
+      "expected_output": "Shows error message requiring a work item ID or task description",
+      "files": [],
+      "expectations": [
+        "Detects empty arguments",
+        "Shows the error message about requiring a work item ID or description",
+        "Shows usage examples",
+        "Does not begin implementation"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "code this task: add retry logic to the API client",
+      "expected_output": "Implements the task described in natural language",
+      "files": [],
+      "expectations": [
+        "Recognizes 'code this task' as a natural language description",
+        "Passes the full description to the implementation flow",
+        "Coordinates research, implementation, and testing"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "work on abc",
+      "expected_output": "Treats as natural language task description since it does not match ID format",
+      "files": [],
+      "expectations": [
+        "Detects 'abc' does not match work item ID pattern",
+        "Treats it as natural language task description since it does not match ID format",
+        "Proceeds with implementation based on the description"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "implement F3-789 — it's a new feature adding webhook support to the notification service",
+      "expected_output": "Implements the feature AND produces documentation deliverables at the Standard tier (SDD, coverage, tests, V&V)",
+      "files": [],
+      "expectations": [
+        "Determines proportionality tier based on scope (feature = Standard minimum)",
+        "Produces an SDD in doc/design/",
+        "Runs linter and captures report",
+        "Runs tests with coverage and reports percentage",
+        "Reports documentation deliverables in the final report table"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "implement: fix the typo in the error message on line 42 of config.py",
+      "expected_output": "Fixes the typo with Minimal tier documentation (no SDD, no diagrams)",
+      "files": [],
+      "expectations": [
+        "Determines this is a bug fix with minimal scope",
+        "Applies Minimal proportionality tier",
+        "Produces linter report and test results only",
+        "Does NOT produce SDD, diagrams, or engineering journal",
+        "Reports the tier as MINIMAL with rationale in the deliverables table"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "triage",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "triage: the login page crashes when entering special characters in the password field",
+      "expected_output": "Triage flow invoked with the bug description, scope check performed, work item created",
+      "files": [],
+      "expectations": [
+        "Processes the issue description through the triage flow",
+        "Checks doc/requirements.md for scope",
+        "Searches for duplicate work items before creating",
+        "Creates a well-structured bug work item with severity and reproduction steps"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "triage (no arguments)",
+      "expected_output": "Interactive menu presented with 3 options",
+      "files": [],
+      "expectations": [
+        "Detects empty arguments",
+        "Presents the 3-option menu (describe, transcript from Drive, paste)",
+        "Waits for user choice before proceeding",
+        "Does not create work items until user provides input"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "triage: we need a dark mode toggle in the settings page",
+      "expected_output": "Scope check identifies this as potentially out-of-scope, proposes requirement change",
+      "files": [],
+      "expectations": [
+        "Processes the feature request through the triage flow",
+        "Reads doc/requirements.md to check scope",
+        "If out of scope, halts work item creation and proposes requirement change",
+        "Waits for user approval before proceeding"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "triage a Google Meet transcript from yesterday's planning meeting",
+      "expected_output": "Fetches transcript from Drive, extracts action items, triages each individually",
+      "files": [],
+      "expectations": [
+        "Searches Google Drive for recent Meet transcripts",
+        "Presents the 5 most recent transcripts for user selection",
+        "Extracts distinct issues from the transcript",
+        "Presents all proposed work items as a batch for review before creating"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "file a bug: API returns 500 error on the /users endpoint when pagination exceeds 100",
+      "expected_output": "Bug work item created with proper fields referencing the violated requirement",
+      "files": [],
+      "expectations": [
+        "Recognizes this as a bug report",
+        "Bugs are always in scope — references the requirement the bug violates",
+        "Creates work item with clear title, description, steps to reproduce",
+        "Includes severity classification and suggests assignee"
+      ]
+    }
+  ]
+}

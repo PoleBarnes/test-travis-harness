@@ -1,0 +1,60 @@
+{
+  "skill_name": "pr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/pr",
+      "expected_output": "Smart triage showing the most relevant PR action based on current branch and PR queue",
+      "files": [],
+      "expectations": [
+        "Detects current branch and whether it's a feature branch or main",
+        "Checks for existing open PRs and assigned reviews",
+        "Proposes a default action with Enter-to-confirm flow"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/pr 42",
+      "expected_output": "Full review of PR #42 with security, test coverage, standards, and V&V checks",
+      "files": [],
+      "expectations": [
+        "Fetches PR #42 metadata, diff, and comments from the devops platform",
+        "Runs review checks covering code quality, security, test coverage, and V&V",
+        "Presents structured review with verdict (APPROVE or REQUEST CHANGES)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "create a PR targeting main",
+      "expected_output": "Pre-flight checks, review pipeline, and PR creation targeting main branch",
+      "files": [],
+      "expectations": [
+        "Validates current branch is not main",
+        "Runs pre-flight checks (uncommitted changes, branch pushed, commits ahead)",
+        "Runs review checks, fixes blocking issues with confirmation, creates PR"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/pr PROJ-123",
+      "expected_output": "PR creation with work item PROJ-123 linked for V&V traceability",
+      "files": [],
+      "expectations": [
+        "Recognizes PROJ-123 as a work item ID",
+        "Fetches work item for V&V traceability and PR description enrichment",
+        "Enters create mode with work item linked"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "review the PR at https://github.com/org/repo/pull/55",
+      "expected_output": "Full review of the PR extracted from the GitHub URL",
+      "files": [],
+      "expectations": [
+        "Extracts owner, repository, and PR number from the URL",
+        "Enters review mode for PR #55",
+        "Presents structured review report"
+      ]
+    }
+  ]
+}

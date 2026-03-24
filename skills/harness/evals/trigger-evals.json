@@ -1,0 +1,11 @@
+[
+  {"query": "check harness health", "should_trigger": true},
+  {"query": "diagnose plugin issues", "should_trigger": true},
+  {"query": "plugin health", "should_trigger": true},
+  {"query": "harness audit", "should_trigger": true},
+  {"query": "check MCP servers", "should_trigger": true},
+  {"query": "create a pull request", "should_trigger": false},
+  {"query": "what should I work on today?", "should_trigger": false},
+  {"query": "plan next sprint", "should_trigger": false},
+  {"query": "post my standup update", "should_trigger": false}
+]

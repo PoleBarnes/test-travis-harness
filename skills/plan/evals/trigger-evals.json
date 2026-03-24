@@ -1,0 +1,14 @@
+[
+  {"query": "plan work from triage branches", "should_trigger": true},
+  {"query": "what's in triage", "should_trigger": true},
+  {"query": "synthesize backlog", "should_trigger": true},
+  {"query": "process triage branches", "should_trigger": true},
+  {"query": "list triage branches", "should_trigger": true},
+  {"query": "file a bug about the login page", "should_trigger": false},
+  {"query": "what should I work on next?", "should_trigger": false},
+  {"query": "create a pull request", "should_trigger": false},
+  {"query": "implement PROJ-123", "should_trigger": false},
+  {"query": "turn triage branches into a structured implementation plan", "should_trigger": true},
+  {"query": "create work items from the triage analysis", "should_trigger": true},
+  {"query": "what should I work on next", "should_trigger": false}
+]

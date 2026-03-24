@@ -1,0 +1,14 @@
+[
+  {"query": "create a pull request", "should_trigger": true},
+  {"query": "review PR #42", "should_trigger": true},
+  {"query": "check my PRs", "should_trigger": true},
+  {"query": "submit this branch for review", "should_trigger": true},
+  {"query": "what should I work on next?", "should_trigger": false},
+  {"query": "plan the next sprint", "should_trigger": false},
+  {"query": "log my time for today", "should_trigger": false},
+  {"query": "run the test suite", "should_trigger": false},
+  {"query": "review the code changes in my branch", "should_trigger": true},
+  {"query": "do an inline code review on the latest commits", "should_trigger": true},
+  {"query": "audit test coverage and traceability", "should_trigger": false},
+  {"query": "implement the feature described in PROJ-456", "should_trigger": false}
+]
